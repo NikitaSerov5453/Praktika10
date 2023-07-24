@@ -14,18 +14,24 @@ public class Lesson7 {
     }
 
     public static void luckyNumber(int number) {
-        char[] chars = ("" + number).toCharArray();
-        int a = Integer.parseInt(String.valueOf(chars[0])) +
-                Integer.parseInt(String.valueOf(chars[1])) +
-                Integer.parseInt(String.valueOf(chars[2]));
-
-        int b = Integer.parseInt(String.valueOf(chars[3])) +
-                Integer.parseInt(String.valueOf(chars[4])) +
-                Integer.parseInt(String.valueOf(chars[5]));
-        if (a == b) {
-            System.out.println("Число счасливое");
+        String string = String.valueOf(number);
+        if (string.length() % 2 == 0) {
+            int counter = 0;
+            String s1 = string.substring(0, string.length() / 2);
+            String s2 = string.substring(string.length() / 2);
+            char[] chars1 = s1.toCharArray();
+            char[] chars2 = s2.toCharArray();
+            for (int i = 0; i < string.length()/2; i++) {
+                counter += Integer.parseInt(String.valueOf(chars1[i]));
+                counter -= Integer.parseInt(String.valueOf(chars2[i]));
+            }
+            if (counter == 0) {
+                System.out.println("Число счастливое");
+            } else {
+                System.out.println("Число не счастливое");
+            }
         } else {
-            System.out.println("Число не счастливое");
+            System.out.println("Введено не корректное заначение");
         }
     }
 
